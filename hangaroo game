@@ -1,0 +1,74 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Nov 15 23:39:29 2019
+
+@author: JUSTIN
+"""
+import random
+wordlist = ["spongebob","patrick","pearl","plankton","sandy","squidward","gary","mrcrabs","mspuffs"]
+
+guessword =[]
+secretword = random.choice(wordlist)
+lengthword = len(secretword)
+letters = 'abcdefghijklmnopqrstuvwxyz'
+letterstorage = []
+
+
+def begin():
+    print ("henlow welcome to Hangarooo(Spongebob version)\n")
+    name = input ("Enter your name :").strip()
+
+    print ("Hi",name,"Enter 1 to start the game and 2 to exit")
+    n = input("")
+    if n == "1" :
+        print("Let us begin\n\n")
+    else: 
+       exit
+       
+    
+begin ()
+
+def mechanics():
+    for characters in secretword:
+        guessword.append ("-")
+    print ("the word that you need to guess has",lengthword,"letters")
+    print ("you can only guess 1 letter from a-z lowercase only!\n\n")
+    print (guessword)
+
+def guess():
+    guesstake = 1
+    p = 0
+    o = 3
+    
+    while guesstake < 10:
+        guess =input("Enter a letter:")
+        if guess in letterstorage:
+            print ("you have already entered that letter")
+            p = guesstake + 3
+        else:
+            
+            letterstorage.append(guess)
+            if guess in secretword:
+                print ("May tama ka")
+                for x in range(0, lengthword):
+                    if secretword[x] == guess:
+                        guessword[x] = guess
+                        print(guessword)
+                        
+                if not '-' in guessword:
+                    print("You got the Character!")
+                    break
+            else:
+                o -= 1
+                print("The letter is not in the word. Try Again! you have",o,"more tries" )
+                guesstake += 3
+                if p == 10 or guesstake >= 10:
+                    print(" Sorry 3 strikes you're out:( , The correct word is :",         secretword)
+
+mechanics()
+guess()
+
+print("Game Over!")
+    
+
+    
