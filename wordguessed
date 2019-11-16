@@ -1,0 +1,7 @@
+letterstorage.append(guess)
+            if guess in secretword:
+                print ("May tama ka")
+                for x in range(0, lengthword):
+                    if secretword[x] == guess:
+                        guessword[x] = guess
+                        print(guessword)
