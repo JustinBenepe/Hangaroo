@@ -1,0 +1,32 @@
+def guess():
+    guesstake = 1
+    p = 0
+    o = 3
+    
+    while guesstake < 10:
+        guess =input("Enter a letter:")
+        if guess in letterstorage:
+            print ("you have already entered that letter")
+            p = guesstake + 3
+        else:
+            
+            letterstorage.append(guess)
+            if guess in secretword:
+                print ("May tama ka")
+                for x in range(0, lengthword):
+                    if secretword[x] == guess:
+                        guessword[x] = guess
+                        print(guessword)
+                        
+                if not '-' in guessword:
+                    print("You got the Character!")
+                    break
+            else:
+                o -= 1
+                print("The letter is not in the word. Try Again! you have",o,"more tries" )
+                guesstake += 3
+                if p == 10 or guesstake >= 10:
+                    print(" Sorry 3 strikes you're out:( , The correct word is :",         secretword)
+
+
+guess()
